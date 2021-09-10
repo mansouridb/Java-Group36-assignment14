@@ -1,0 +1,62 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="Year1">Year1:</label>
+    <input type="number" id="year1" name="Year1"><br><br>
+
+    <label for="Year2">Year2:</label>
+    <input type="number" id="year2" name="Year2"><br><br>
+
+    <button onClick="CHKDATE_Fun()">
+        Get Result
+    </button>
+    <p id="chk"></p>
+
+
+    <script>
+        let s = `Enter the value of Year1 
+             year's having Sunday on 1st January`;
+
+        document.getElementById("geeks")
+            .innerHTML = `<p>${s}</p>`;
+
+        function CHKDATE_Fun() {
+            var y1 = Number(document
+                .getElementById('year1').value);
+
+            var y2 = Number(document
+                .getElementById('year2').value);
+
+            var res = " ";
+
+            for (let year = y1; year <= y2; ++year) {
+                const c_year = new Date(year, 0, 1);
+                if (c_year.getDay() === 0) {
+                    res += year + " ,";
+                }
+            }
+
+            if (y1 > y2) {
+                document.getElementById('chk').innerHTML = "Year2 must be greater than Year1";
+            } else {
+                if (res === " ") {
+                    document.getElementById('chk')
+                        .innerHTML = `<p>No Year Exist</p>`;
+                } else {
+                    document.getElementById('chk')
+                        .innerHTML = `<p> Year having 
+                    Sunday on 1st January are :${res}</p>`;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
